@@ -5,6 +5,9 @@ const dbConnection = require("./database/db_connection");
 const connectedUsers = [];
 var usersScores = [];  //score format,string 'username:score'
 const port = process.env.PORT || 5000;
+if(!process.env.PORT){
+  process.env.NODE_ENV='test';
+}
 const gamePhases = {
   pending: "Game pending",
   onGoing: "Game onGoing",

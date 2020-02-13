@@ -18,7 +18,7 @@ body {
     min-width: 370px;
     /* width: 126vw; */
     height: 9%;
-    padding: 0 9 0 9;
+    padding: 0px 9px 0px 9px;
     display: flex;
     justify-content: space-between;
     background-color: #eee;
@@ -117,7 +117,7 @@ body {
     padding: 5px 10px;
     background:blueviolet;
     color: whitesmoke;
-    font-size: 1.3em;
+    font-size: 1.2em;
 }
 .info-bar h2 {
     color: dimgray;

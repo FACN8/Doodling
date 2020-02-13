@@ -2,7 +2,7 @@ BEGIN;
 
 
 DROP TABLE IF EXISTS usernames;
-
+DROP TABLE IF EXISTS round;
 
 create table usernames (
     name CITEXT PRIMARY KEY,
@@ -25,6 +25,12 @@ insert into usernames (name, password) values ('shireen', '1234');
 insert into usernames (name, password) values ('fatima', '1234');
 insert into usernames (name, password) values ('mahmood', '1234');
 insert into usernames (name, password) values ('francis', '1234');
+insert into usernames (name, password) values ('ghazal', 'ghazal');
+insert into usernames (name, password) values ('sima', 'sima');
+insert into usernames (name, password) values ('adhm', 'adhm');
+
+
+
 
 insert into round (doodle) values ('camel');
 insert into round (doodle) values ('car');

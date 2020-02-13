@@ -21,7 +21,7 @@ function updateList(list, values) {
   });
 }
 /************  globals and consts **********/
-const SETROUNDTIME = 30;
+const SETROUNDTIME = 15;
 var imageData;
 var currentDrawingUser = false;
 var userScore = 0;
@@ -46,6 +46,7 @@ function wordToDashes(word) {
 function resetGame() {
   roundTime = SETROUNDTIME;
   userScore = 0;
+  var roundTimer = null;
   currentDrawingUser = false;
   guessed = false;
   userScoreObj = {};
@@ -119,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function() {
       currWord.textContent = wordToDashes(gameWord);
       currentDrawingUser = false;
     }
-    var roundTimer = setInterval(() => {
+     roundTimer = setInterval(() => {
       getClass("round-time")[0].textContent = roundTime;
       roundTime -= 1;
       if (roundTime < 0) {
@@ -134,6 +135,7 @@ document.addEventListener("DOMContentLoaded", function() {
   socket.on("round end", scoresArray => {
     console.log("round end event recivend on front end!");
     console.log("Scores array recives:", scoresArray);
+    clearInterval(roundTimer);
     displayScores(scoresArray); //send scoresArray, but now its a fake one
   });
 
@@ -280,6 +282,7 @@ document.addEventListener("DOMContentLoaded", function() {
           sentMsg = ` just gueesed the word!`;
           getClass("score")[0].textContent = userScore + " points";
           guessed = true;
+          socket.emit("round end",currentUser+ ':' + userScore);
         } else {
           getId("message").value = "";
           return false;
